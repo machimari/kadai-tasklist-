@@ -13,23 +13,20 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries({
     @NamedQuery(
-        name = "getAllMessages",
+        name = "getAllTasks",
         query = "SELECT m FROM Message AS m ORDER BY m.id DESC"
             ),
     @NamedQuery(
-        name = "getMessagesCount",
+        name = "getTasksCount",
         query = "SELECT COUNT(m) FROM Message AS m"
         )
 })
-@Table(name = "messages")
+@Table(name = "tasks")
 public class Message {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "title", length = 255, nullable = false)
-    private String title;
 
     @Column(name = "content", length = 255, nullable = false)
     private String content;
@@ -46,14 +43,6 @@ public class Message {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getContent() {
