@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
@@ -49,8 +50,9 @@ public class UpdateServlet extends HttpServlet {
             m.setContent(content);
 
             Timestamp currentTime = new Timestamp(System.currentTimeMillis());
-            m.setUpdated_at(currentTime);       // 更新日時のみ上書き
-         // バリデーションを実行してエラーがあったら編集画面のフォームに戻る
+            m.setUpdated_at(currentTime);     // 更新日時のみ上書き
+            
+            // バリデーションを実行してエラーがあったら編集画面のフォームに戻る
             List<String> errors = MessageValidator.validate(m);
             if(errors.size() > 0) {
                 em.close();

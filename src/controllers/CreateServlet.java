@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.servlet.RequestDispatcher;
@@ -54,6 +55,7 @@ public class CreateServlet extends HttpServlet {
             List<String> errors = MessageValidator.validate(m);
             if(errors.size() > 0) {
                 em.close();
+                
                 // フォームに初期値を設定、さらにエラーメッセージを送る
                 request.setAttribute("_token", request.getSession().getId());
                 request.setAttribute("message", m);
@@ -70,7 +72,7 @@ public class CreateServlet extends HttpServlet {
 
                 // indexのページにリダイレクト
             response.sendRedirect(request.getContextPath() + "/index");
-        }
+            }
         }
     }
 }
