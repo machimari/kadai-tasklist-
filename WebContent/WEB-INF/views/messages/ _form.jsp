@@ -11,7 +11,7 @@
 </c:if>
 
 <label for="content_msg">メッセージ</label><br />
-<input type="text" name="content" id="content_msg" value="${message.content}" />
+<input type="text" name="content" id="content_msg" value="${tasks.content}" />
 <br /><br />
 
 <input type="hidden" name="_token" value="${_token}" />

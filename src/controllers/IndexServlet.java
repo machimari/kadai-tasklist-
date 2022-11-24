@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import models.Message;
+import models.Tasks;
 import utils.DBUtil;
 /**
  * Servlet implementation class IndexServlet
@@ -40,7 +40,7 @@ public class IndexServlet extends HttpServlet {
         } catch(NumberFormatException e) {}
 
         // 最大件数と開始位置を指定してメッセージを取得
-        List<Message> tasks = em.createNamedQuery("getAllTasks", Message.class)
+        List<Tasks>tasks = em.createNamedQuery("getAllTasks", Tasks.class)
                                                         .setFirstResult(15 * (page - 1))
                                                         .setMaxResults(15)
                                                         .getResultList();
